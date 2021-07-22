@@ -56,8 +56,8 @@ Accuracy is determined using confusion matrix. ‘caret’ package is used for c
 In the above result, from the prediction table, 9361 out of 10659 are able to be classified as skin 
 and 47251 out of 50605 are able to be classified as non-skin. So, the accuracy to predict skin is 
 87.8% and the accuracy to predict non skin is 93.37%. This results in an overall accuracy of 
-**92.41%.
-**
+**92.41%.**
+
 ### 2. Decision Tree
 
 Decision tree is a type of supervised learning algorithm mostly used for classification problem. 
