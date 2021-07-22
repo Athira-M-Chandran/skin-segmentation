@@ -25,6 +25,17 @@ Box plot representation is shown below:
 
 Box plot is used to represent descriptive statistics of each variable in a dataset. It represents the 
 minimum, first quartile, median, third quartile, and the maximum values of a variable.
+![boxplot visualization](https://github.com/Athira-M-Chandran/skin-segmentation/blob/main/BOXPLOT.png?raw=true)
+
+Histogram representation of data using **ggplot**
+![Visualization using ggplot](https://github.com/Athira-M-Chandran/skin-segmentation/blob/main/visual.jpeg?raw=true)
+
+### Labelling values
+
+`skin$skin_color <- factor(skin$skin_color, 
+                   levels = c (1, 2), 
+                   labels = c (0,1))` 
+
 #### Splitting dataset
 First step is to partition the dataset as training and testing data. ‘caTools ‘package is used to 
 make a balanced partitioning.
@@ -94,7 +105,33 @@ skin and 48509 out of 48528 are able to be classified as non-skin. So, the accur
 skin is 99.69% and the accuracy to predict non skin is 99.96%. This results in an overall accuracy 
 of **99.90%**.
 
+### 3. Logistic Regression
+Computing logistic regression using Generalized linear model function.
+
+`skin_log <- glm(skin_color ~ ., family = binomial(link = "logit") , data = train)`
+
+Prediction
+
+`skin_pred_log <- predict(object = skin_log,
+                         newdata = test,
+                         type = "response")`
+                        
+Since the values vary from 0 to 1, values above 0.5 are taken as 1 and values below 0.5 are 
+taken as 0.
+
+`skin_prediction <- ifelse(skin_pred_log > 0.5, 1, 0)`
+
+Checking the accuracy using a confusion matrix by comparing predictions to actual 
+classifications. ‘caret’ package is used for confusion matrix.
+
+`skin_log_matrix <- table(test$skin_color, skin_prediction)`
+
+`confusionMatrix(skin_log_matrix)`
+
+#### Result
+Here the accuracy is 0.9188 . This results in an overall accuracy of **91.88%**.
+
 ### Conclusion
 The accuracy of Naïve Bayes to predict skin and non-skin on bases of green, blue, red is **92.41%**
-and for Decision tree is **99.90%**. From the overall result it is clear that Decision tree is more 
+and for Decision tree is **99.90%** and for logistic regression is **91.88%**. From the overall result it is clear that Decision tree is more 
 accurate compared to Naïve Bayes
