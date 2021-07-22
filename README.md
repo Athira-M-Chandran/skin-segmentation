@@ -75,6 +75,8 @@ get a visual plot of a decision tree.
  
 `rpart.plot(skin_decision,type= 4 , extra=1)`
 
+![Decision Tree](https://github.com/Athira-M-Chandran/skin-segmentation/blob/69f7f016e7675d1c47cb0a273d8e13122aece4d0/decision_tree.png?raw=true)
+
 Predict the dataset as skin or non-skin using predict() on test.
 
 `skin_pred <- predict(object = skin_decision,
